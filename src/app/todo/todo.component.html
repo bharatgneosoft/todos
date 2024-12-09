@@ -1,0 +1,32 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-4">TODO APP</h1>
+
+    <!-- Input for new task -->
+    <div class="input-group mb-3">
+        <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="newtask"
+            placeholder="Add new todo"
+        />
+        <button class="btn btn-primary" (click)="addTask()">Add Task</button>
+    </div>
+
+    <!-- Todo list -->
+    <ul class="list-group">
+        <li *ngFor="let todo of todos" class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <label class="me-3">
+                    {{ todo.task }}
+                    <span *ngIf="todo.completed" class="badge bg-success ms-2">Completed</span>
+                </label>
+            </div>
+            <div>
+                <button class="btn btn-sm btn-success me-2" (click)="toggleComplete(todo)">
+                    {{ todo.completed ? 'Undo' : 'Complete' }}
+                </button>
+                <button class="btn btn-sm btn-danger" (click)="deleteTask(todo.task)">Delete</button>
+            </div>
+        </li>
+    </ul>
+</div>
